@@ -19,7 +19,7 @@ if(!IS_PROD) {
   babelLoaderOptions.plugins.push(require.resolve("react-refresh/babel"))
 }
 
-
+/** @type {import('webpack').Configuration} */
 module.exports = {
   mode: IS_PROD ? "production" : "development",
   entry: "./src/index.tsx",
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.png|svg|jpg|gif|json$/,
