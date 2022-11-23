@@ -5,8 +5,7 @@ import App from "./App";
 import "./clear.css";
 import "./index.css";
 
-
-const root = ReactDOM.createRoot(document.getElementById("poke"));
+const root = ReactDOM.createRoot(document.getElementById("poke") as HTMLElement);
 
 root.render(
   <React.StrictMode>
