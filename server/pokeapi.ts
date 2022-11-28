@@ -1,4 +1,10 @@
-import { fetch } from "./utils";
+import { fetch, metricToFeet, metricToPounds, padDigit } from "./utils";
+import {
+  Pokemon,
+  Lexmon,
+  PokemonData,
+  PokemonSpeciesData,
+} from "./types";
 
 const fetchJson = (url: string) => fetch(url).then(r => r.json()).catch(console.error);
 
@@ -19,4 +25,14 @@ const getPokeList = async () => {
   }));
 };
 
+export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
+  id: padDigit(pokemon.id),
+  name: pokemon.name.toUpperCase(),
+  image: `images/${pokemon.id}.png`,
+  cry: `cries/${pokemon.id}.png`,
+  ht: metricToFeet(pokemon.height),
+  wt: metricToPounds(pokemon.weight),
+  species: pokemon.genera[7].genus.replace(' Pokémon', '').toUpperCase(),
+  entry: pokemon.flavor_text_entries[6].flavor_text.replace(/\n/gi, ' ').replace(/\f/gi, ' '),
+});
 export default getPokeList;
