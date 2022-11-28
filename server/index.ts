@@ -6,18 +6,19 @@ import getPokeList from "./pokeapi";
 let server: Server;
 
 async function main() {
-  const pokemon = await getPokeList(true);
-  console.info(`Loaded ${pokemon.length} pokemon!`);
+  getPokeList(true).then(pokemon => {
+    console.info(`Loaded ${pokemon.length} pokemon!`);
+  });
   server = createServer(app);
   server.listen(config.port, () =>
-    console.log(`Server listening to port ${config.port}`)
+    console.info(`Server listening to port ${config.port}`)
   );
 }
 
 const exitHandler = () => {
   if (server) {
     server.close(() => {
-      console.log("Server closed");
+      console.info("Server closed");
       process.exit(1);
     });
   } else {
@@ -34,7 +35,7 @@ process.on("uncaughtException", errorHandler);
 process.on("unhandledRejection", errorHandler);
 
 process.on("SIGTERM", () => {
-  console.log("SIGTERM Received");
+  console.info("SIGTERM Received");
   if (server) {
     server.close();
   }
