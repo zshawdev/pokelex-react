@@ -33,3 +33,5 @@ export async function fetch(...args: any) {
   const {default: fetch} = await _importDynamic('node-fetch');
   return fetch(...args);
 }
+
+export const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));

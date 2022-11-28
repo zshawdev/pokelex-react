@@ -1,5 +1,5 @@
 import NodeCache from "node-cache";
-import { fetch, metricToFeet, metricToPounds, padDigit } from "./utils";
+import { fetch, metricToFeet, metricToPounds, padDigit, sleep } from "./utils";
 import {
   Pokemon,
   Lexmon,
@@ -12,7 +12,10 @@ const fetchJson = (url: string) => fetch(url).then(r => r.json()).catch(console.
 
 const pokemonCache = new NodeCache();
 
+let fetching = false;
+
 const getPokeList = async (): Promise<CachedPokemon[]> => {
+  fetching = true;
   // base data
   const pokemonDataPromise = new Array(151).fill(0).map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`));
   // localization data
@@ -30,11 +33,14 @@ const getPokeList = async (): Promise<CachedPokemon[]> => {
 
   pokemonCache.mset(cacheData.map(cachedPokemon => ({ key: cachedPokemon.base.id, val: cachedPokemon })));
 
+  fetching = false;
+
   return cacheData;
 };
 
 export const getPokemon = async (id: number): Promise<CachedPokemon | null> => {
   // clamp this for now just in case we weirdly call this for a non-kanto pokemon
+  // (this should theoretically not matter at all but there's no harm in adding this constraint)
   if (id > 0 && id <= 151) {
     // first try and grab from cache
     const cachedPokemon = pokemonCache.get<CachedPokemon>(id);
@@ -61,6 +67,35 @@ export const getPokemon = async (id: number): Promise<CachedPokemon | null> => {
     console.warn("Calling `getPokemon` for non-Kanto Pokémon!");
   }
   return null;
+};
+
+export const getAllPokemon = async (tries = 0): Promise<CachedPokemon[] | null> => {
+  const keys = new Array(151).fill(0).map((_, i) => i + 1);
+  const allPokemon = pokemonCache.mget<CachedPokemon>(keys);
+  const entries = Object.entries(allPokemon).filter(([id, pokemon]) => Object.keys(pokemon).length);
+
+  // if for whatever reason we dont have all pokemon check to see if we're currently fetching them
+  // if we're not fetching them already, fetch them and then recurse
+  // only allow this type of recursion 5 times (aka 1 second of sleeping and then returning not including the actual pokeapi fetch time)
+  if(entries.length < 151) {
+    if(tries <= 5) {
+      if(fetching) {
+        // wait a little bit and then try again
+        await sleep(200);
+        return getAllPokemon(tries + 1);
+      } else {
+        // try fetching the entirety of this
+        await getPokeList();
+        return getAllPokemon(tries + 1);
+      }
+    } else {
+      // bail out. this is not working at this point
+      return null;
+    }
+  }
+
+  // dont bother comparing `id` here since doing the string -> int conversion is a pointless function call
+  return entries.map(([id, pokemon]) => pokemon).sort((pokeA, pokeB) => pokeA.base.id - pokeB.base.id);
 };
 
 export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
