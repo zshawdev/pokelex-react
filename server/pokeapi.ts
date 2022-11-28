@@ -1,6 +1,6 @@
 import NodeCache from "node-cache";
 import { fetch, metricToFeet, metricToPounds, padDigit, sleep } from "./utils";
-import {
+import type {
   Pokemon,
   Lexmon,
   PokemonData,
@@ -13,8 +13,12 @@ const fetchJson = (url: string) => fetch(url).then(r => r.json()).catch(console.
 const pokemonCache = new NodeCache();
 
 let fetching = false;
+let settingUp = false;
 
-const getPokeList = async (): Promise<CachedPokemon[]> => {
+export const isSettingUp = () => settingUp;
+
+const getPokeList = async (first?: boolean): Promise<CachedPokemon[]> => {
+  if(first) settingUp = true;
   fetching = true;
   // base data
   const pokemonDataPromise = new Array(151).fill(0).map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`));
@@ -34,6 +38,7 @@ const getPokeList = async (): Promise<CachedPokemon[]> => {
   pokemonCache.mset(cacheData.map(cachedPokemon => ({ key: cachedPokemon.base.id, val: cachedPokemon })));
 
   fetching = false;
+  settingUp = false;
 
   return cacheData;
 };

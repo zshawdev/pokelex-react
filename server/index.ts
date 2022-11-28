@@ -6,9 +6,8 @@ import getPokeList from "./pokeapi";
 let server: Server;
 
 async function main() {
-  getPokeList().then(res => {
-    console.info(`Loaded ${res.length} pokemon!`);
-  });
+  const pokemon = await getPokeList(true);
+  console.info(`Loaded ${pokemon.length} pokemon!`);
   server = createServer(app);
   server.listen(config.port, () =>
     console.log(`Server listening to port ${config.port}`)
