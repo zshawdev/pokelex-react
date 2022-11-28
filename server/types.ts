@@ -59,6 +59,8 @@ interface GenerationSprite {
   front_transparent: string;
 }
 
+
+// TODO: make the versions object here its own auto-generated interface
 interface PokemonSprites extends FrontSprite, FrontShinySprite {
   back_default: string;
   back_female: string | null;
@@ -110,6 +112,8 @@ export interface PokemonData {
 }
 
 
+// `LanguageGeneric<K, V>` is any object that has some kind of language api resource combined with an optional game version and some other identifier (defaults to "name").
+// This could theoretically be expanded to be used with all ApiResource interfaces (mainly this GenericRecord bit) but this would require a much deeper understanding of how the entire pokeapi is laid out and all potential values keys can take for these resources (not to mention some gross type mapping for specific key values)
 interface Language<V extends boolean = false> {
   language: ApiResource<"language">;
   version: V extends false ? never : ApiVersionResource;
@@ -170,4 +174,9 @@ export interface Lexmon {
   wt: string;
   species: string;
   entry: string;
+}
+
+export interface CachedPokemon {
+  base: Pokemon;
+  lex: Lexmon;
 }
