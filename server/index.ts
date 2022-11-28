@@ -4,11 +4,15 @@ import config from "./config";
 import getPokeList from "./pokeapi";
 
 let server: Server;
+
 async function main() {
-  await getPokeList();
-  console.log("Pokemon list loaded");
+  getPokeList().then(res => {
+    console.info(`Loaded ${res.length} pokemon!`);
+  });
   server = createServer(app);
-  server.listen(config.port, () => console.log(`Server listening to port ${config.port}`));
+  server.listen(config.port, () =>
+    console.log(`Server listening to port ${config.port}`)
+  );
 }
 
 const exitHandler = () => {
@@ -36,6 +40,5 @@ process.on("SIGTERM", () => {
     server.close();
   }
 });
-
 
 main();
