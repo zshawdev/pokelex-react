@@ -11,4 +11,13 @@ body {
   align-items: center;
   background-color: #DFD4D4;
   cursor: default;
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
