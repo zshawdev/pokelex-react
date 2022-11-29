@@ -2,22 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --deg: 0deg;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: VT323;
-  color: white;
+  font-size: 1.6rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #DFD4D4;
+  background-color: #dfd4d4;
   cursor: default;
-  min-height: 100%;
-  min-width: 100%;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 main {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+}
+
+/* vt323-regular - latin */
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: 400;
+  src: url("assets/fonts/vt323-v15-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local(""),
+    url("assets/fonts/vt323-v15-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/vt323-v15-latin-regular.woff2") format("woff2"),
+    url("assets/fonts/vt323-v15-latin-regular.woff") format("woff"),
+    url("assets/fonts/vt323-v15-latin-regular.ttf") format("truetype"),
+    url("assets/fonts/vt323-v15-latin-regular.svg#VT323") format("svg");
+  /* Legacy iOS */
 }
