@@ -32,11 +32,11 @@ export const formatWeight = (unit: "imperial" | "metric", weight: number) => {
 
 export const padDigit = (num: number, size: number = 3) => num.toString().padStart(size, "0");
 
-// stub for making node-fetch behave properly with ts compiled to commonjs module instead of esm
+// stub for making node-fetch behave properly since ts compiles this to commonjs instead of esm
 const _importDynamic = new Function('modulePath', 'return import(modulePath)')
 export async function fetch(...args: any) {
   const {default: fetch} = await _importDynamic('node-fetch');
   return fetch(...args);
 }
 
-export const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
+export const sleep = async (ms: number) => new Promise(res => setTimeout(res, ms));
