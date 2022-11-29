@@ -1,28 +1,33 @@
-export const metricToFeet = (height: number) => {
-  const raw = (height / 10) * 3.28084;
-  let feet = Math.floor(raw);
-  let inches = Math.round((raw - feet) * 12);
-  if (inches === 12) {
-    feet++;
-    inches = 0;
-    return `${feet}'0${inches}"`;
+//Unit Conversion
+export const formatHeight = (unit: "imperial" | "metric", height: number) => {
+  if (unit === "imperial") {
+      const raw = (height / 10) * 3.28084; //height's value: meters albeit misplaced (stored: 69, desired: 6.9), is converted to meters (via / 10) then meters-to-feet
+      let feet = Math.floor(raw);
+      let inches = Math.round((raw - feet) * 12);
+      if (inches === 12) {
+          feet++;
+          inches = 0;
+      }
+      return `${feet}'${String(inches).padStart(2, "0")}"`;
+  } else if (unit === "metric") {
+      const metricHeight = height / 10;
+      return `${metricHeight.toFixed(1).replace(".", ",")}m`;
   }
-  if (inches < 10) {
-    return `${feet}'0${inches}"`;
-  } else {
-    return `${feet}'${inches}"`;
-  }
+
+  return height.toString();
 };
 
-export const metricToPounds = (weight: number) => {
-  const raw = (weight / 10) * 3.28084;
-  let pounds = Math.floor(raw);
-  let subPounds = Math.round((raw - pounds) * 10);
-  if(subPounds === 10) {
-    pounds++;
-    subPounds = 0;
+export const formatWeight = (unit: "imperial" | "metric", weight: number) => {
+  if (unit === "imperial") {
+      const raw = (weight / 10) * 2.2046; //weight's value: same situation as height above
+      let pounds = raw.toFixed(1);
+      return `${pounds}lb`;
+  } else if (unit === "metric") {
+      const metricWeight = weight / 10;
+      return `${metricWeight.toFixed(1).replace(".", ",")}kg`;
   }
-  return `${pounds}.${subPounds}lbs`;
+
+  return weight.toString();
 };
 
 export const padDigit = (num: number, size: number = 3) => num.toString().padStart(size, "0");

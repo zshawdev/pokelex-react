@@ -98,13 +98,37 @@ export const getAllPokemon = async (tries = 0): Promise<CachedPokemon[] | null> 
 
 export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
   id: padDigit(pokemon.id),
-  name: pokemon.name.toUpperCase(),
+  name: {
+    en: pokemon.names[8].name.toUpperCase(),
+    de: pokemon.names[5].name.toUpperCase(),
+    fr: pokemon.names[4].name.toUpperCase(),
+  },
   image: `images/${pokemon.id}.png`,
   cry: `cries/${pokemon.id}.png`,
-  ht: metricToFeet(pokemon.height),
-  wt: metricToPounds(pokemon.weight),
-  species: pokemon.genera[7].genus.replace(' Pokémon', '').toUpperCase(),
-  entry: pokemon.flavor_text_entries[6].flavor_text.replace(/\n/gi, ' ').replace(/\f/gi, ' '),
+  ht: {
+    imperial: formatHeight("imperial", pokemon.height),
+    metric: formatHeight("metric", pokemon.height),
+  },
+  wt: {
+    imperial: formatWeight("imperial", pokemon.weight),
+    metric: formatWeight("metric", pokemon.weight),
+  },
+  species: {
+    en: pokemon.genera[7].genus.replace(" Pokémon", "").toUpperCase(),
+    de: pokemon.genera[4].genus.replace("-Pokémon", "").toUpperCase(),
+    fr: pokemon.genera[3].genus.replace("Pokémon ", "").toUpperCase(),
+  },
+  entry: {
+    en: pokemon.flavor_text_entries[6].flavor_text
+      .replace(/\n/gi, " ")
+      .replace(/\f/gi, " "),
+    de: pokemon.flavor_text_entries[25].flavor_text
+      .replace(/\n/gi, " ")
+      .replace(/\f/gi, " "),
+    fr: pokemon.flavor_text_entries[24].flavor_text
+      .replace(/\n/gi, " ")
+      .replace(/\f/gi, " "),
+  },
 });
 
 const mapPokemonToCache = (pokemon: Pokemon): CachedPokemon => ({

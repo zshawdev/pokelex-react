@@ -166,15 +166,26 @@ interface PokemonSpeciesData {
 
 type Pokemon = PokemonData & PokemonSpeciesData;
 
+interface LangSplit {
+  en: string;
+  de: string;
+  fr: string;
+}
+
+interface Measurement {
+  metric: string;
+  imperial: string;
+}
+
 interface Lexmon {
   id: string;
-  name: string;
+  name: LangSplit;
   image: string;
   cry: string;
-  ht: string;
-  wt: string;
-  species: string;
-  entry: string;
+  ht: Measurement;
+  wt: Measurement;
+  species: LangSplit;
+  entry: LangSplit;
 }
 
 interface CachedPokemon {
