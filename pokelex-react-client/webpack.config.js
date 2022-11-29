@@ -12,7 +12,7 @@ const plugins = [
   }),
   new CopyPlugin({
     patterns: [{ from: "public", to: "./" }],
-  })
+  }),
 ];
 
 const babelLoaderOptions = { plugins: [] };
@@ -27,11 +27,11 @@ if (!IS_PROD) {
 module.exports = {
   mode: IS_PROD ? "production" : "development",
   optimization: {
-    usedExports: IS_PROD ? true : false
+    usedExports: IS_PROD ? true : false,
   },
   entry: "./src/index.tsx",
   devServer: {
-    hot: true,
+    hot: true
   },
   target: "web",
   output: {
@@ -55,33 +55,18 @@ module.exports = {
         test: /\.css$/,
         use: [
           "style-loader",
-          "css-loader",
+          { loader: "css-loader", options: { url: false } },
           "postcss-loader",
         ],
       },
       {
-        test: /\.png|svg|jpg|gif|json$/,
-        use: [
-          {
-            loader: "file-loader",
-            // options: {
-            //   publicPath: path.resolve(__dirname, "/public/img"),
-            // },
-          },
-        ],
+        test: /\.png|svg|jpg|gif|jpeg$/,
+        type: "asset/resource",
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
-      }
+        type: "asset/resource",
+      },
     ],
   },
 };

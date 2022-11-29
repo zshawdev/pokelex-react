@@ -11,5 +11,6 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  darkMode: "class"
+  darkMode: "class",
+  content: ["./src/**/*.{html,js,ts,tsx}"]
 }
