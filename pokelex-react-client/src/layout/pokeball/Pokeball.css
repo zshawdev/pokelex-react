@@ -1,0 +1,26 @@
+.pokeball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pokeball::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  left: -28rem;
+  content: "";
+  background-image: url("assets/img/icons/pokeball.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: translate(-50%, -50%) rotate(var(--deg));
+  height: 40rem;
+  aspect-ratio: 1;
+}
+
+@media(max-width: 56.25em) {
+  .pokeball {
+    left: -10rem;
+  }
+}
