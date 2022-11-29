@@ -1,10 +1,13 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 
+export const LANG_OPTIONS = ["en", "fr", "de"] as const;
+export type LangOption = typeof LANG_OPTIONS[number];
 export interface Language {
-  lang: "en" | "fr" | "de";
+  language: LangOption;
+  setLanguage: React.Dispatch<React.SetStateAction<LangOption>>;
 }
-const LanguageContext = React.createContext<Language>({ lang: "en" });
+const LanguageContext = createContext<Language>({ language: "en", setLanguage: () => {} });
 export const LanguageContextProvider = LanguageContext.Provider;
 
-const useLanguage = React.useContext(LanguageContext);
+const useLanguage = () => useContext(LanguageContext);
 export default useLanguage;
