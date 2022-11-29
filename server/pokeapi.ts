@@ -1,7 +1,10 @@
 import NodeCache from "node-cache";
-import { fetch, metricToFeet, metricToPounds, padDigit, sleep } from "./utils";
+import { fetch, formatHeight, formatWeight, padDigit, sleep } from "./utils";
 
-const fetchJson = (url: string) => fetch(url).then(r => r.json()).catch(console.error);
+const fetchJson = (url: string) =>
+  fetch(url)
+    .then((r) => r.json())
+    .catch(console.error);
 
 const pokemonCache = new NodeCache();
 
@@ -11,24 +14,40 @@ let settingUp = false;
 export const isSettingUp = () => settingUp;
 
 const getPokeList = async (first?: boolean): Promise<CachedPokemon[]> => {
-  if(first) settingUp = true;
+  if (first) settingUp = true;
   fetching = true;
   // base data
-  const pokemonDataPromise = new Array(151).fill(0).map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`));
+  const pokemonDataPromise = new Array(151)
+    .fill(0)
+    .map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon/${i + 1}`));
   // localization data
-  const pokemonSpeciesDataPromise = new Array(151).fill(0).map((_, i) => fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${i + 1}`));
+  const pokemonSpeciesDataPromise = new Array(151)
+    .fill(0)
+    .map((_, i) =>
+      fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${i + 1}`)
+    );
 
-  const [pokemonData, pokemonSpeciesData]: [PokemonData[], PokemonSpeciesData[]] = await Promise.all([
+  const [pokemonData, pokemonSpeciesData]: [
+    PokemonData[],
+    PokemonSpeciesData[]
+  ] = await Promise.all([
     Promise.all(pokemonDataPromise),
-    Promise.all(pokemonSpeciesDataPromise)
+    Promise.all(pokemonSpeciesDataPromise),
   ]);
 
-  const cacheData = pokemonData.map((pokemon, i) => ({ 
-    ...pokemon,
-    ...pokemonSpeciesData[i]
-  })).map(mapPokemonToCache);
+  const cacheData = pokemonData
+    .map((pokemon, i) => ({
+      ...pokemon,
+      ...pokemonSpeciesData[i],
+    }))
+    .map(mapPokemonToCache);
 
-  pokemonCache.mset(cacheData.map(cachedPokemon => ({ key: cachedPokemon.base.id, val: cachedPokemon })));
+  pokemonCache.mset(
+    cacheData.map((cachedPokemon) => ({
+      key: cachedPokemon.base.id,
+      val: cachedPokemon,
+    }))
+  );
 
   fetching = false;
   settingUp = false;
@@ -42,22 +61,25 @@ export const getPokemon = async (id: number): Promise<CachedPokemon | null> => {
   if (id > 0 && id <= 151) {
     // first try and grab from cache
     const cachedPokemon = pokemonCache.get<CachedPokemon>(id);
-    if(cachedPokemon) {
+    if (cachedPokemon) {
       return cachedPokemon;
     } else {
-      const [pokemonData, pokemonSpeciesData]: [PokemonData, PokemonSpeciesData] = await Promise.all([
+      const [pokemonData, pokemonSpeciesData]: [
+        PokemonData,
+        PokemonSpeciesData
+      ] = await Promise.all([
         fetchJson(`https://pokeapi.co/api/v2/pokemon/${id}`),
-        fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+        fetchJson(`https://pokeapi.co/api/v2/pokemon-species/${id}`),
       ]);
 
-      if(pokemonData?.id && pokemonSpeciesData?.id) {
+      if (pokemonData?.id && pokemonSpeciesData?.id) {
         const cachedPokemon: CachedPokemon = mapPokemonToCache({
           ...pokemonData,
-          ...pokemonSpeciesData
+          ...pokemonSpeciesData,
         });
-  
+
         pokemonCache.set(cachedPokemon.base.id, cachedPokemon);
-  
+
         return cachedPokemon;
       }
     }
@@ -67,18 +89,23 @@ export const getPokemon = async (id: number): Promise<CachedPokemon | null> => {
   return null;
 };
 
-export const getAllPokemon = async (tries = 0): Promise<CachedPokemon[] | null> => {
+export const getAllPokemon = async (
+  tries = 0
+): Promise<CachedPokemon[] | null> => {
   const keys = new Array(151).fill(0).map((_, i) => i + 1);
   const allPokemon = pokemonCache.mget<CachedPokemon>(keys);
-  const entries = Object.entries(allPokemon).filter(([id, pokemon]) => Object.keys(pokemon).length);
+  const entries = Object.entries(allPokemon).filter(
+    ([id, pokemon]) => Object.keys(pokemon).length
+  );
 
   // if for whatever reason we dont have all pokemon check to see if we're currently fetching them
   // if we're not fetching them already, fetch them and then recurse
   // only allow this type of recursion 5 times (aka 1 second of sleeping and then returning not including the actual pokeapi fetch time)
-  if(entries.length < 151) {
-    if(tries <= 5) {
-      if(fetching) {
+  if (entries.length < 151) {
+    if (tries <= 5) {
+      if (fetching) {
         // wait a little bit and then try again
+        // TODO: build out a better way to emit when `getPokemonList` finishes and resolve that here
         await sleep(200);
         return getAllPokemon(tries + 1);
       } else {
@@ -93,9 +120,12 @@ export const getAllPokemon = async (tries = 0): Promise<CachedPokemon[] | null> 
   }
 
   // dont bother comparing `id` here since doing the string -> int conversion is a pointless function call
-  return entries.map(([id, pokemon]) => pokemon).sort((pokeA, pokeB) => pokeA.base.id - pokeB.base.id);
+  return entries
+    .map(([id, pokemon]) => pokemon)
+    .sort((pokeA, pokeB) => pokeA.base.id - pokeB.base.id);
 };
 
+// TODO: make this language agnostic and map all localizations for the name/ species/ entry keys
 export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
   id: padDigit(pokemon.id),
   name: {

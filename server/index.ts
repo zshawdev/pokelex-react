@@ -6,6 +6,7 @@ import getPokeList from "./pokeapi";
 let server: Server;
 
 async function main() {
+  // dont await this so that dev server can start immediately and client doesnt spit out a bunch of 404s
   getPokeList(true).then(pokemon => {
     console.info(`Loaded ${pokemon.length} pokemon!`);
   });

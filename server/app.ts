@@ -14,12 +14,14 @@ app.use("/pokemon/:id", async (req, res, next) => {
   // an amateur way to let clients load a little longer on initial api requests if the server is still being set up
   if(isSettingUp()) {
     for(let i = 0; i < 5; i++) {
+      // TODO: make this recurse properly instead of putting the entire thread to sleep
       if(isSettingUp()) await sleep(1000);
       else break;
     }
   }
 
   const { id } = req.params;
+  
   if(id) {
     const cachedPokemon = await getPokemon(parseInt(id, 10));
     if(cachedPokemon) {
