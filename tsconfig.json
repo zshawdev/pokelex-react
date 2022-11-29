@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "esnext"
-    ],
     "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
@@ -14,11 +11,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "outDir": "./dist",
+    "rootDir": "./server",
+    "baseUrl": "./src"
   },
   "include": [
-    "server/**/*.ts",
+    "server/**/*",
+    "custom.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

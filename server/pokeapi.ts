@@ -1,12 +1,5 @@
 import NodeCache from "node-cache";
 import { fetch, metricToFeet, metricToPounds, padDigit, sleep } from "./utils";
-import type {
-  Pokemon,
-  Lexmon,
-  PokemonData,
-  PokemonSpeciesData,
-  CachedPokemon
-} from "./types";
 
 const fetchJson = (url: string) => fetch(url).then(r => r.json()).catch(console.error);
 

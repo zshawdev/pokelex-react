@@ -1,6 +1,6 @@
-export type PokeApiUrl<T extends string> = `https://pokeapi.co/api/v2/${T}/${string}`;
+type PokeApiUrl<T extends string> = `https://pokeapi.co/api/v2/${T}/${string}`;
 
-export interface ApiResource<T extends string = ""> {
+interface ApiResource<T extends string = ""> {
   name: string;
   url: PokeApiUrl<T>;
 }
@@ -59,7 +59,6 @@ interface GenerationSprite {
   front_transparent: string;
 }
 
-
 // TODO: make the versions object here its own auto-generated interface
 interface PokemonSprites extends FrontSprite, FrontShinySprite {
   back_default: string;
@@ -69,14 +68,14 @@ interface PokemonSprites extends FrontSprite, FrontShinySprite {
   other: {
     dream_world: FrontSprite;
     home: FrontSprite & FrontShinySprite;
-    'official-artwork': FrontSprite;
+    "official-artwork": FrontSprite;
   };
   versions: {
-    'generation-i': {
-      'red-blue': GenerationSprite;
+    "generation-i": {
+      "red-blue": GenerationSprite;
       yellow: GenerationSprite;
     }; // ignore all other generations for now since this is just a lot of boilerplate
-  }
+  };
 }
 
 interface PokemonStat {
@@ -90,7 +89,7 @@ interface PokemonType {
   type: ApiResource<"type">;
 }
 
-export interface PokemonData {
+interface PokemonData {
   id: number;
   abilities: PokemonAbility[];
   base_experience: number;
@@ -111,7 +110,6 @@ export interface PokemonData {
   weight: number;
 }
 
-
 // `LanguageGeneric<K, V>` is any object that has some kind of language api resource combined with an optional game version and some other identifier (defaults to "name").
 // This could theoretically be expanded to be used with all ApiResource interfaces (mainly this GenericRecord bit) but this would require a much deeper understanding of how the entire pokeapi is laid out and all potential values keys can take for these resources (not to mention some gross type mapping for specific key values)
 interface Language<V extends boolean = false> {
@@ -119,7 +117,10 @@ interface Language<V extends boolean = false> {
   version: V extends false ? never : ApiVersionResource;
 }
 type GenericRecord<K extends string> = Record<K, string>;
-type LanguageGeneric<K extends string = "name", V extends boolean = false> = Language<V> & GenericRecord<K>;
+type LanguageGeneric<
+  K extends string = "name",
+  V extends boolean = false
+> = Language<V> & GenericRecord<K>;
 
 // none of the first 151 pokemon have this data so we're just stubbing it for now
 interface FormDescription {}
@@ -135,13 +136,13 @@ interface PokemonVariety {
   pokemon: ApiResource<"pokemon">;
 }
 
-export interface PokemonSpeciesData {
+interface PokemonSpeciesData {
   id: number;
   base_happiness: number;
   capture_rate: number;
   egg_groups: ApiResource<"egg-group">[];
   evolution_chain: { url: PokeApiUrl<"evolution-chain"> };
-  evolves_from_species: null | '';
+  evolves_from_species: null | "";
   flavor_text_entries: LanguageGeneric<"flavor_text", true>[];
   form_descriptions: FormDescription[];
   forms_switchable: boolean;
@@ -163,9 +164,9 @@ export interface PokemonSpeciesData {
   varieties: PokemonVariety[];
 }
 
-export type Pokemon = PokemonData & PokemonSpeciesData;
+type Pokemon = PokemonData & PokemonSpeciesData;
 
-export interface Lexmon {
+interface Lexmon {
   id: string;
   name: string;
   image: string;
@@ -176,7 +177,7 @@ export interface Lexmon {
   entry: string;
 }
 
-export interface CachedPokemon {
+interface CachedPokemon {
   base: Pokemon;
   lex: Lexmon;
 }
