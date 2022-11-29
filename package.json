@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:server": "ts-node server/index.ts",
     "start:client": "cd pokelex-react-client && npm run dev",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",

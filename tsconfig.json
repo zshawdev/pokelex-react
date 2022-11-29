@@ -17,6 +17,9 @@
     "server/**/*",
     "custom.d.ts"
   ],
+  "ts-node": {
+    "files": true
+  },
   "exclude": [
     "node_modules",
     "dist"
