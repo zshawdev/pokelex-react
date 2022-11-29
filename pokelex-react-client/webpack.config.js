@@ -10,16 +10,14 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: "./src/index.html",
   }),
+  new CopyPlugin({
+    patterns: [{ from: "public", to: "./" }],
+  })
 ];
 
 const babelLoaderOptions = { plugins: [] };
 
 if (!IS_PROD) {
-  plugins.push(
-    new CopyPlugin({
-      patterns: [{ from: "./public/**/*", to: "./" }],
-    })
-  );
   plugins.push(new webpack.HotModuleReplacementPlugin());
   plugins.push(new ReactRefreshWebpackPlugin());
   babelLoaderOptions.plugins.push(require.resolve("react-refresh/babel"));
@@ -28,6 +26,9 @@ if (!IS_PROD) {
 /** @type {import('webpack').Configuration} */
 module.exports = {
   mode: IS_PROD ? "production" : "development",
+  optimization: {
+    usedExports: IS_PROD ? true : false
+  },
   entry: "./src/index.tsx",
   devServer: {
     hot: true,
