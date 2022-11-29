@@ -8,7 +8,7 @@
     "start:server": "ts-node server/index.ts",
     "start:client": "cd pokelex-react-client && npm run dev",
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
-    "build:server": "tsc && copyfiles server/images/* server/cries/* dist/",
+    "build:server": "rm -rf dist && tsc && copyfiles -u 1 server/images/*.png server/cries/*.wav dist",
     "build:client": "cd pokelex-react-client && npm run build",
     "build": "npm run build:server && npm run build:client"
   },
