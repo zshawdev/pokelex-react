@@ -6,8 +6,8 @@ import { sleep } from "./utils";
 
 const app = express();
 
-app.use("/cries", express.static(path.join(__dirname, "..", "cries")));
-app.use("/images", express.static(path.join(__dirname, "..", "images")));
+app.use("/cries", express.static(path.join(__dirname, "cries")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(express.json());
 
 app.use("/pokemon/:id", async (req, res, next) => {

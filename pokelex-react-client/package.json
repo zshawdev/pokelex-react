@@ -4,15 +4,17 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "webpack serve --hot --open"
+    "dev": "webpack serve --hot --open",
+    "build": "webpack --progress --node-env production"
   },
   "author": "Zane Shaw",
   "license": "ISC",
   "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.14.0",
-    "react-router-dom": "^6.4.2"
+    "simplebar-react": "^2.4.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
@@ -23,6 +25,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.8",
     "@types/node": "18.11.8",
     "@types/react": "18.0.24",
+    "@types/react-dom": "^18.0.9",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.0.1",
     "css-loader": "^6.7.1",
