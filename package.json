@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"ts-node server/index.ts\" \"cd pokelex-react-client && npm run dev\"",
     "start:server": "ts-node server/index.ts",
-    "build": ""
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

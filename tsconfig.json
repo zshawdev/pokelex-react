@@ -1,19 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2016",
+    "module": "commonjs",
     "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
-    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "outDir": "./dist",
     "rootDir": "./server",
-    "baseUrl": "./src"
   },
   "include": [
     "server/**/*",
