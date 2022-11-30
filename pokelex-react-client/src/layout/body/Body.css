@@ -7,7 +7,7 @@
   background-color: rgba(43, 33, 33, 0.9);
 }
 
-@media (max-width: 56.25em) {
+@media (max-width: 814px) {
   .body {
     border-radius: 3.6rem 1rem 1rem 7rem;
   }
