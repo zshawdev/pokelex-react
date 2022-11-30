@@ -38,14 +38,28 @@
 
 PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
 
+## Prerequisites
+
+* [NodeJS](https://nodejs.org/en/download/) version 16+
+
 ## Getting Started
 
-1. run `npm install`
-2. run `npm start`
+```bash
+npm install
+npm start
+```
 
 That's it!
 
-## Usage
+## 🏗 Built With
+
+* [NodeJS](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [Typescript](https://www.typescriptlang.org/) - TypeScript is a strongly typed programming language that builds on JavaScript
+* [Express](https://expressjs.com/) - A minimalist web framework for Node.js
+* [React](https://reactjs.org/) - JS library for building rich user interfaces
+* [TailwindCSS](https://tailwindcss.com/) - Utility first CSS framework
+
+## 📸 Screenshots
 
 PokéLex boasts a slick interface and parallels many of the functionalities of the actual Pokédex device as featured throughout the famous video game series:
 ![Base Features](repo-resources/pokedex-readme.png)
