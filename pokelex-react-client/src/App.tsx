@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LangOption, LanguageContextProvider } from "./hooks/useLanguage";
+import { LanguageContextProvider } from "./hooks/useLanguage";
 import Layout from "./layout/Layout";
 import resolveLanguage from "./utils/resolveLanguage";
 
