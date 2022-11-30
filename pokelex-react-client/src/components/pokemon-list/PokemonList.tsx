@@ -54,7 +54,7 @@ const PokemonList: React.FC<{
               : true
           )
           .map((pokemon) => (
-            <li key={pokemon.id} tabIndex={-1}>
+            <li key={pokemon.id} tabIndex={-1} onClick={() => onPokemonClick(pokemon.id)}>
               <span className="text-[2.8rem]">{pokemon.id}</span>
               <span className="absolute left-[11.5rem] text-[2.8rem]">
                 {pokemon.name[language]}
