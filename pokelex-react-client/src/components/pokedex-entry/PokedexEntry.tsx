@@ -10,19 +10,19 @@ import "./PokedexEntry.css";
 const speciesMap: LangSplit = {
   en: "SPECIES",
   fr: "ESPÈCES",
-  de: "SPECIES"
+  de: "SPECIES",
 };
 
 const heightMap: LangSplit = {
   en: "HT",
   fr: "TAI",
-  de: "GR."
+  de: "GR.",
 };
 
 const weightMap: LangSplit = {
   en: "WT",
   fr: "PDS",
-  de: "GEW"
+  de: "GEW",
 };
 
 const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
@@ -39,28 +39,31 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
     }
   }, [activePokemon]);
 
-  const styleProps = { style: { display: entryPaneActive ? "block" : "none" } };
-
   const playAudio = () => {
     if (audioFile) audioFile.play();
   };
 
-  const scrollPad = { paddingRight: entryPaneRef.current ? entryPaneRef.current.offsetWidth - entryPaneRef.current.clientWidth : 17 };
+  const scrollPad = {
+    paddingRight: entryPaneRef.current
+      ? entryPaneRef.current.offsetWidth - entryPaneRef.current.clientWidth
+      : 17,
+  };
 
-  if(!entryPaneActive) return null;
+  if (!entryPaneActive) return null;
 
   return (
-    <div
-      {...styleProps}
-      className="body-pane md:w-[55%] md:border-l md:border-solid border-white overflow-hidden"
-    >
+    <div className="body-pane md:w-[55%] md:border-l md:border-solid border-white overflow-hidden">
       {fetchingPokemon ? (
         <Loading size={100} useText={false} />
       ) : (
-        <div ref={entryPaneRef} style={scrollPad} className="h-full w-full box-content overflow-y-scroll">
+        <div
+          ref={entryPaneRef}
+          style={scrollPad}
+          className="h-full w-full box-content overflow-y-scroll"
+        >
           <div className="flex flex-col items-center">
             <span className="text-accent mt-xsmall">
-              No. {activePokemon?.id}
+              No. {activePokemon?.id ?? "???"}
             </span>
             <span className="text-norm">
               {activePokemon?.name?.[language] ?? "MissingNo."}
@@ -75,25 +78,30 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
               onClick={playAudio}
             />
           </div>
-          {activePokemon && (<>
-            <div className="flex gap-[1.6rem] my-0 mx-small">
-              <span>
-                <span className="text-accent">{ speciesMap[language] }</span>&nbsp;
-                {activePokemon.species[language]}
-              </span>
-              <span>
-                <span className="text-accent">{ heightMap[language] }</span>&nbsp;
-                {activePokemon.ht[MEASURE_CHOICE[language]]}
-              </span>
-              <span>
-                <span className="text-accent">{ weightMap[language] }</span>&nbsp;
-                {activePokemon.wt[MEASURE_CHOICE[language]]}
-              </span>
-            </div>
-            <p className="text-small border-t border-white border-solid my-0 mx-small">
-              { activePokemon.entry[language] }
-            </p>
-          </>)}
+          {activePokemon && (
+            <>
+              <div className="flex gap-[1.6rem] my-0 mx-small">
+                <span>
+                  <span className="text-accent">{speciesMap[language]}</span>
+                  &nbsp;
+                  {activePokemon.species[language]}
+                </span>
+                <span>
+                  <span className="text-accent">{heightMap[language]}</span>
+                  &nbsp;
+                  {activePokemon.ht[MEASURE_CHOICE[language]]}
+                </span>
+                <span>
+                  <span className="text-accent">{weightMap[language]}</span>
+                  &nbsp;
+                  {activePokemon.wt[MEASURE_CHOICE[language]]}
+                </span>
+              </div>
+              <p className="text-small border-t border-white border-solid my-0 mx-small">
+                {activePokemon.entry[language]}
+              </p>
+            </>
+          )}
         </div>
       )}
     </div>
