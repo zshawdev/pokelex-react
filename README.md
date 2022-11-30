@@ -64,3 +64,14 @@ That's it!
 PokéLex boasts a slick interface and parallels many of the functionalities of the actual Pokédex device as featured throughout the famous video game series:
 ![Base Features](repo-resources/pokedex-readme.png)
 ![Other Features](repo-resources/pokedex-readme-m.png)
+
+## TODO
+
+## 🛣 Roadmap
+
+* Spanish, Italian and Japanese as language options
+* Options for choosing additional information per Pokémon
+* Expand Pokémon list to all current Pokémon
+* Additional Pokédex features (world locations, evolutions, additional search sorts and filters)
+* Auto-generated TypeScript interfaces for data from PokéAPI
+* 
