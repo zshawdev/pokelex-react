@@ -25,7 +25,7 @@ const getBgImage = () => {
 const Background: React.FC = () => {
   const bgImage = useRef(getBgImage()).current;
 
-  return (<div style={{ backgroundImage: `url(${bgImage})` }} className="absolute h-full w-full z-0 poke-background" />);
+  return (<div style={{ backgroundImage: `url(${bgImage})` }} className="absolute h-full w-full -z-10 poke-background" />);
 };
 
 export default Background;
