@@ -19,9 +19,27 @@ const PokemonList: React.FC<{
   onPokemonClick: (id: string) => void;
 }> = ({ selectPaneActive, pokemonList, onPokemonClick }) => {
   const { language } = useLanguage();
+  const scrollRef = useRef<any>();
   const [search, setSearch] = useState<string>("");
 
   const otherProps = selectPaneActive ? { style: { display: "block" } } : {};
+
+  useEffect(() => {
+    const scrollListener: EventListener = (e => {
+      const { target } = e;
+      if(target) {
+        const { scrollTop, clientHeight } = target as HTMLDivElement;
+        const degrees = Math.round((scrollTop / (CONTENT_HEIGHT - clientHeight)) * 360);
+        document.documentElement.style.setProperty("--deg", `${ degrees }deg`)
+      }
+    });
+
+    scrollRef.current?.addEventListener("scroll", scrollListener);
+
+    return () => {
+      scrollRef.current?.removeEventListener("scroll", scrollListener);
+    }
+  }, []);
 
   return (
     <div
@@ -42,8 +60,9 @@ const PokemonList: React.FC<{
       </div>
       <SimpleBar
         tag="ol"
-        data-simplebar-direction="rtl" // I don't know why the direction key straight up does not work
+        data-simplebar-direction="rtl" // I don't know why the direction prop straight up does not work but this does
         className="list-of-pokemon"
+        scrollableNodeProps={{ ref: scrollRef }}
       >
         {pokemonList
           .filter((p) =>
