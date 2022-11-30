@@ -1,7 +1,7 @@
 import React from "react";
 
 // made using loading.io
-const Loading: React.FC<{ size?: number }> = ({ size = 200 }) => {
+const Loading: React.FC<{ size?: number, useText?: boolean }> = ({ size = 200, useText = true }) => {
   return (
     <div className="w-full h-full flex justify-center items-center">
       <svg
@@ -55,7 +55,7 @@ const Loading: React.FC<{ size?: number }> = ({ size = 200 }) => {
           ></animate>
         </path>
       </svg>
-      <div className="text-[5rem] pl-8 pt-4">Loading</div>
+      {useText && <div className="text-[5rem] pl-8 pt-4">Loading</div>}
     </div>
   );
 };

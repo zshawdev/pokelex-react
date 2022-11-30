@@ -51,14 +51,14 @@ const PokemonList: React.FC<{
       className="body-pane hidden bg-transparent ml-0 pl-[5.1125rem] md:block md:w-[45%] md:ml-[calc(4.8rem-2rem)] md:pl-0"
     >
       <input
-        className="search ml-8 bg-black border border-accent h-[2.85rem] w-[30.4rem] text-[2.8rem] mt-[1.1rem] mb-[0.4rem] text-center"
+        className="search ml-8 bg-black border border-accent h-[2.85rem] w-[30.4rem] text-norm mt-small mb-[0.4rem] text-center"
         type="search"
         autoComplete="off"
         placeholder={langMap[language]}
         value={search}
         onInput={(event) => setSearch(event.currentTarget.value)}
       />
-      <div className="text-[2.8rem] ml-8 text-accent relative pl-[calc(2px+1.3rem)]">
+      <div className="text-norm ml-8 text-accent relative pl-[calc(2px+1.3rem)]">
         <span>No.</span>
         <span className="absolute left-[11.5rem]">POK&#233;MON</span>
       </div>
@@ -78,8 +78,8 @@ const PokemonList: React.FC<{
           )
           .map((pokemon) => (
             <li key={pokemon.id} tabIndex={-1} onClick={() => onPokemonClick(pokemon.id)}>
-              <span className="text-[2.8rem]">{pokemon.id}</span>
-              <span className="absolute left-[11.5rem] text-[2.8rem]">
+              <span className="text-norm">{pokemon.id}</span>
+              <span className="absolute left-[11.5rem] text-norm">
                 {pokemon.name[language]}
               </span>
             </li>

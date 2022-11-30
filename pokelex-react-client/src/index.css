@@ -5,6 +5,8 @@
 @layer base {
   :root {
     --color-accent: 135 135 135;
+    --med: 2.8rem;
+    --small: 1.1rem;
   }
 }
 
