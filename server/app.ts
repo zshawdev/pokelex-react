@@ -32,11 +32,6 @@ app.use("/pokemon/:id", async (req, res, next) => {
     if(cachedPokemon) {
       return res.json(cachedPokemon.lex)
     }
-  } else {
-    const cachedPokemon = await getAllPokemon();
-    if(cachedPokemon) {
-      return res.json(cachedPokemon.map(p => p.lex));
-    }
   }
 
   return res.sendStatus(404);

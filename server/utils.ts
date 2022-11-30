@@ -30,8 +30,9 @@ export const formatWeight = (unit: "imperial" | "metric", weight: number) => {
   return weight.toString();
 };
 
-export const padDigit = (num: number, size: number = 3) => num.toString().padStart(size, "0");
+export const padDigit = (num: number, size: number = 3) => num?.toString().padStart(size, "0");
 
+// this will randomly break the testing suite at times. when it does run npx jest --clearCache
 // stub for making node-fetch behave properly since ts compiles this to commonjs instead of esm
 const _importDynamic = new Function('modulePath', 'return import(modulePath)')
 export async function fetch(...args: any) {
