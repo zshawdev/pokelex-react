@@ -53,3 +53,45 @@ main {
     url("assets/fonts/vt323-v15-latin-regular.svg#VT323") format("svg");
   /* Legacy iOS */
 }
+
+.simplebar-wrapper {
+  height: 100%;
+}
+
+.simplebar-offset {
+  left: 2rem;
+}
+
+.simplebar-scrollbar::before {
+  opacity: 100%;
+  /* Prevents thumb fade out on inactivity */
+}
+
+.simplebar-track {
+  overflow: visible;
+  /* Keeps thumb color consistently black */
+}
+
+.simplebar-scrollbar {
+  background: black;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4.5rem;
+  width: 0.85rem;
+}
+
+.simplebar-vertical {
+  border: 0.4px solid #878787;
+  border-radius: 4.5rem;
+  height: 10rem;
+  width: 0.9rem;
+}
+
+.simplebar-content-wrapper {
+
+  scroll-snap-type: y mandatory;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 1rem;
+  /* Changes track width */
+}
