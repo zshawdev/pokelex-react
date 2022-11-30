@@ -7,4 +7,4 @@ export const getAllPokemon = () => fetchJson(BASE_URL + "pokemon/");
 
 export const getPokemon = (id: number) => fetchJson(BASE_URL + "pokemon/" + id);
 
-export const getPokemonList = (id: number) => fetchJson(BASE_URL + "pokemon-list/");
+export const getPokemonList = () => fetchJson(BASE_URL + "pokemon-list/");
