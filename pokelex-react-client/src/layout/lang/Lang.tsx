@@ -1,5 +1,5 @@
 import React from "react";
-import LangButton from "../../components/LangButton";
+import { LangButton } from "../../components";
 import useLanguage, { LangOption } from "../../hooks/useLanguage";
 
 const langMap: Record<LangOption, Record<LangOption, string>> = {
