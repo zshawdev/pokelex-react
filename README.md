@@ -17,11 +17,11 @@
  ┃     ┣ 📂hooks      # hooks that (for right now) store mostly context objects
  ┃     ┣ 📂layout     # components that strictly handle application structure/ layout
  ┃     ┣ 📂utils
- ┃     ┣ api.ts       # server application interactoin
- ┃     ┣ [clear.css, index.css] # base imported css styles
- ┃     ┣ App.tsx      # Application entry point
- ┃     ┣ index.tsx    # bootstrap
- ┃     ┗ index.html   # template for webpack html copy plugin
+ ┃     ┣ 📘api.ts       # server application interactoin
+ ┃     ┣ 📔[clear.css, index.css] # base imported css styles
+ ┃     ┣ ⚛️App.tsx      # Application entry point
+ ┃     ┣ ⚛️index.tsx    # bootstrap
+ ┃     ┗ 📄index.html   # template for webpack html copy plugin
  ┃
  ┣ 📂server 
  ┃  ┣ 📂[cries, images]  # static assets that are served from the server
