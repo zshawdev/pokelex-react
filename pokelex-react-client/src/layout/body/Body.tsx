@@ -76,6 +76,7 @@ const Body: React.FC = () => {
               selectPaneActive={!listCollapsed}
               onPokemonClick={selectPokemon}
             />
+            <PokedexEntry />
           </>
         )}
       </div>
