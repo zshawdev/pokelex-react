@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Toggle.css";
+
 const Toggle: React.FC<{ onClick: () => void }> = ({ onClick }) => (
   <span
     onClick={onClick}

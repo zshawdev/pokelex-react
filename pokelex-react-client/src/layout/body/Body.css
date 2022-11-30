@@ -13,29 +13,9 @@
   }
 }
 
-.icon {
-  position: relative;
-  top: 50%;
-}
-
-.icon,
-.icon::before,
-.icon::after {
-  width: 3rem;
-  height: 0.2rem;
-  background-color: #fff;
-  display: inline-block;
-}
-
-.icon::before,
-.icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
-}
-.icon::before {
-  top: -0.8rem;
-}
-.icon::after {
-  top: 0.8rem;
+.body-pane {
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
