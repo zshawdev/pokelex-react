@@ -4,7 +4,7 @@ export const ONE_DAY_MS = ONE_HOUR_MS * 24;
 
 export const noop = () => {};
 
-export const MEASURE_CHOICE: LangSplit = {
+export const MEASURE_CHOICE: Record<LangOption, keyof Measurement> = {
   en: "imperial",
   fr: "metric",
   de: "metric"
