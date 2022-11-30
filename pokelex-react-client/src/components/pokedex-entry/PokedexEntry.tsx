@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getResource } from "../../api";
 import useLanguage from "../../hooks/useLanguage";
 import usePokemon from "../../hooks/usePokemon";
 import Loading from "../Loading";
@@ -10,8 +11,19 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
 }) => {
   const { language } = useLanguage();
   const { activePokemon, fetchingPokemon } = usePokemon();
+  const [audioFile, setAudiofile] = useState<HTMLAudioElement>();
+
+  useEffect(() => {
+    if(activePokemon && activePokemon.cry) {
+      setAudiofile(new Audio(getResource(activePokemon.cry)));
+    }
+  }, [activePokemon]);
 
   const styleProps = { style: { display: entryPaneActive ? "block" : "none" } };
+
+  const playAudio = () => {
+    if(audioFile) audioFile.play();
+  }
 
   return (
     <div
@@ -26,7 +38,9 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
             <span className="text-accent mt-small">
               No. {activePokemon?.id}
             </span>
-            <span className="text-norm">{ activePokemon?.name[language] }</span>
+            <span className="text-norm">{ activePokemon?.name?.[language] ?? "MissingNo." }</span>
+            <img className={"mt-[0.8rem] w-[8.536rem]"} src={getResource( activePokemon?.image ?? "images/missingno.png")} />
+            <img className="" src="assets/img/icons/speaker.png" onClick={playAudio} />
           </div>
         </>
       )}

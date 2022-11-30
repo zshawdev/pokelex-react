@@ -20,3 +20,5 @@ export const setup = async () => {
     pikachu
   };
 }
+
+export const getResource = (path: string) => BASE_URL + path;

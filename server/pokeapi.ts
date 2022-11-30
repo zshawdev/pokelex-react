@@ -134,7 +134,7 @@ export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
     fr: pokemon.names[4].name.toUpperCase(),
   },
   image: `images/${pokemon.id}.png`,
-  cry: `cries/${pokemon.id}.png`,
+  cry: `cries/${pokemon.id}.wav`,
   ht: {
     imperial: formatHeight("imperial", pokemon.height),
     metric: formatHeight("metric", pokemon.height),
