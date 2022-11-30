@@ -12,11 +12,21 @@ const Body: React.FC = () => {
   const [activePokemon, setActivePokemon] = useState<Lexmon>();
   const [pokemonList, setPokemonList] = useState<PokemonName[]>([]);
   const [lexmon, setLexmon] = useState<Lexmon[]>([]);
+
+  // TODO: setup error handling when api fetching fails
   const [error, setError] = useState<string>();
 
   const toggleCollapse = () => setListCollapsed(!listCollapsed);
 
   useEffect(() => {
+    const resizeListener = () => {
+      if(window.innerWidth > 814 && !listCollapsed) {
+        setListCollapsed(true);
+      }
+    };
+
+    window.addEventListener('resize', resizeListener);
+
     setup()
       .then(({ pokemonList, pikachu }) => {
         if (Array.isArray(pokemonList)) {
@@ -28,6 +38,10 @@ const Body: React.FC = () => {
         }
       })
       .finally(() => setLoading(false));
+
+    return () => {
+      window.removeEventListener('resize', resizeListener);
+    }
   }, []);
 
   const selectPokemon = (id: string) => {
