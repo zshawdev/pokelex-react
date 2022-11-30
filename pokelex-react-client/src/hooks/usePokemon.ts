@@ -3,21 +3,20 @@ import { noop } from "../utils/constants";
 
 export interface PokemonName {
   name: LangSplit;
-  id: number;
+  id: string;
 }
 interface PokemonDataList {
   pokemonList: PokemonName[];
   setPokemonList: (list: PokemonName[]) => void;
   lexmon: Lexmon[];
-  addToLexmon: (lexmon: Lexmon) => void;
   activePokemon?: Lexmon;
   setActivePokemon: (lexmon: Lexmon) => void;
+  fetchingPokemon?: boolean;
 }
 const defaultContext: PokemonDataList = {
   pokemonList: [],
   setPokemonList: noop,
   lexmon: [],
-  addToLexmon: noop,
   setActivePokemon: noop,
 };
 const PokemonContext = React.createContext<PokemonDataList>(defaultContext);
