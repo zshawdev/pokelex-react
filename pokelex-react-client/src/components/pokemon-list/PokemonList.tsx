@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import SimpleBar from "simplebar-react";
 
 import useLanguage, { LangOption } from "../../hooks/useLanguage";
-import { PokemonNameList } from "../../hooks/usePokemon";
+import usePokemon from "../../hooks/usePokemon";
 
 import "simplebar-react/dist/simplebar.min.css";
 import "./PokemonList.css";
@@ -20,7 +20,8 @@ const CONTENT_HEIGHT = 5136;
 const PokemonList: React.FC<{
   selectPaneActive?: boolean;
   onPokemonClick: (id: string) => void;
-}> = ({ selectPaneActive, pokemonList, onPokemonClick }) => {
+}> = ({ selectPaneActive, onPokemonClick }) => {
+  const { pokemonList } = usePokemon();
   const { language } = useLanguage();
   const scrollRef = useRef<any>();
   const [search, setSearch] = useState<string>("");
