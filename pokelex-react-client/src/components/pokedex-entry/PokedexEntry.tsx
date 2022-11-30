@@ -6,6 +6,24 @@ import Loading from "../Loading";
 
 import "./PokedexEntry.css";
 
+const speciesMap: LangSplit = {
+  en: "SPECIES",
+  fr: "ESPÈCES",
+  de: "SPECIES"
+};
+
+const heightMap: LangSplit = {
+  en: "HT",
+  fr: "TAI",
+  de: "GR."
+};
+
+const weightMap: LangSplit = {
+  en: "WT",
+  fr: "PDS",
+  de: "GEW"
+};
+
 const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
   entryPaneActive = true,
 }) => {
@@ -14,7 +32,7 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
   const [audioFile, setAudiofile] = useState<HTMLAudioElement>();
 
   useEffect(() => {
-    if(activePokemon && activePokemon.cry) {
+    if (activePokemon && activePokemon.cry) {
       setAudiofile(new Audio(getResource(activePokemon.cry)));
     }
   }, [activePokemon]);
@@ -22,8 +40,8 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
   const styleProps = { style: { display: entryPaneActive ? "block" : "none" } };
 
   const playAudio = () => {
-    if(audioFile) audioFile.play();
-  }
+    if (audioFile) audioFile.play();
+  };
 
   return (
     <div
@@ -38,10 +56,27 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
             <span className="text-accent mt-small">
               No. {activePokemon?.id}
             </span>
-            <span className="text-norm">{ activePokemon?.name?.[language] ?? "MissingNo." }</span>
-            <img className={"mt-[0.8rem] w-[8.536rem]"} src={getResource( activePokemon?.image ?? "images/missingno.png")} />
-            <img className="" src="assets/img/icons/speaker.png" onClick={playAudio} />
+            <span className="text-norm">
+              {activePokemon?.name?.[language] ?? "MissingNo."}
+            </span>
+            <img
+              className={"mt-[0.8rem] w-[8.536rem] select-none"}
+              src={getResource(activePokemon?.image ?? "images/missingno.png")}
+            />
+            <img
+              className="cursor-pointer mb-4 mt-[0.8rem] w-6 hover:opacity-80 select-none"
+              src="assets/img/icons/speaker.png"
+              onClick={playAudio}
+            />
           </div>
+          {activePokemon && (
+            <div className="flex gap-[1.6rem] my-0 mx-[1.8rem]">
+              <span>
+                <span className="text-accent">{ speciesMap[language] }</span>&nbsp;
+                {activePokemon.species[language]}
+              </span>
+            </div>
+          )}
         </>
       )}
     </div>

@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import SimpleBar from "simplebar-react";
 
-import useLanguage, { LangOption } from "../../hooks/useLanguage";
+import useLanguage from "../../hooks/useLanguage";
 import usePokemon from "../../hooks/usePokemon";
 
 import "simplebar-react/dist/simplebar.min.css";
 import "./PokemonList.css";
 
-const langMap: Record<LangOption, string> = {
+const langMap: LangSplit = {
   en: "SEARCH",
   fr: "RECHERCHER",
   de: "SUCHE",

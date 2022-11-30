@@ -166,11 +166,11 @@ interface PokemonSpeciesData {
 
 type Pokemon = PokemonData & PokemonSpeciesData;
 
-interface LangSplit {
-  en: string;
-  de: string;
-  fr: string;
-}
+const LANG_OPTIONS = ["en", "fr", "de"] as const;
+type LangOptionsArray = typeof LANG_OPTIONS;
+type LangOption = typeof LANG_OPTIONS[number];
+type LangSplit = Record<LangOption, string>;
+
 
 interface Measurement {
   metric: string;
