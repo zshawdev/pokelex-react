@@ -11,10 +11,12 @@ module.exports = {
       "2xl": "1536px",
     },
     fontSize: {
-      norm: 'var(--med)'
+      norm: 'var(--med)',
+      small: 'var(--small)'
     },
     extend: {
       spacing: {
+        xsmall: 'var(--xsmall)',
         small: 'var(--small)',
         norm: 'var(--med)'
       }

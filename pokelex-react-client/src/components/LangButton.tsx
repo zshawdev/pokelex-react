@@ -11,7 +11,7 @@ const LangButton: React.FC<LangButtonProps> = ({ text, onPress, active }) => {
     <button
       onClick={onPress}
       style={bgStyle}
-      className="text-white text-[1.8rem] p-4 cursor-pointer border border-accent hover:border-[#bababa] rounded-[2px]"
+      className="text-white text-small p-4 cursor-pointer border border-accent hover:border-[#bababa] rounded-[2px]"
     >
       {text}
     </button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getResource } from "../../api";
 import useLanguage from "../../hooks/useLanguage";
 import usePokemon from "../../hooks/usePokemon";
+import { MEASURE_CHOICE } from "../../utils/constants";
 import Loading from "../Loading";
 
 import "./PokedexEntry.css";
@@ -53,7 +54,7 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
       ) : (
         <>
           <div className="flex flex-col items-center">
-            <span className="text-accent mt-small">
+            <span className="text-accent mt-xsmall">
               No. {activePokemon?.id}
             </span>
             <span className="text-norm">
@@ -69,14 +70,23 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
               onClick={playAudio}
             />
           </div>
-          {activePokemon && (
-            <div className="flex gap-[1.6rem] my-0 mx-[1.8rem]">
+          {activePokemon && (<>
+            <div className="flex gap-[1.6rem] my-0 mx-small">
               <span>
                 <span className="text-accent">{ speciesMap[language] }</span>&nbsp;
                 {activePokemon.species[language]}
               </span>
+              <span>
+                <span className="text-accent">{ heightMap[language] }</span>&nbsp;
+                {activePokemon.ht[MEASURE_CHOICE[language]]}
+              </span>
+              <span>
+                <span className="text-accent">{ weightMap[language] }</span>&nbsp;
+                {activePokemon.wt[MEASURE_CHOICE[language]]}
+              </span>
             </div>
-          )}
+            <p className="text-small"></p>
+          </>)}
         </>
       )}
     </div>

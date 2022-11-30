@@ -51,7 +51,7 @@ const PokemonList: React.FC<{
       className="body-pane hidden bg-transparent ml-0 pl-[5.1125rem] md:block md:w-[45%] md:ml-[calc(4.8rem-2rem)] md:pl-0"
     >
       <input
-        className="search ml-8 bg-black border border-accent h-[2.85rem] w-[30.4rem] text-norm mt-small mb-[0.4rem] text-center"
+        className="search ml-8 bg-black border border-accent h-[2.85rem] w-[30.4rem] text-norm mt-xsmall mb-[0.4rem] text-center"
         type="search"
         autoComplete="off"
         placeholder={langMap[language]}
