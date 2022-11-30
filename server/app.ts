@@ -37,4 +37,11 @@ app.use("/pokemon/:id", async (req, res, next) => {
   return res.sendStatus(404);
 });
 
+app.use("/pokemon-list", async(req, res, next) => {
+  const cachedPokemon = await getAllPokemon();
+  if(cachedPokemon) {
+    return res.json(cachedPokemon.map(p => ({ name: p.lex.name, id: p.lex.id })));
+  }
+});
+
 export default app;
