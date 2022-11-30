@@ -9,7 +9,8 @@
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "build:server": "rm -rf dist && tsc && copyfiles -u 1 server/images/*.png server/cries/*.wav dist",
     "build:client": "cd pokelex-react-client && npm run build",
-    "build": "npm run build:server && npm run build:client"
+    "build": "npm run build:server && npm run build:client",
+    "install": "cd pokelex-react-client && npm install"
   },
   "repository": {
     "type": "git",
