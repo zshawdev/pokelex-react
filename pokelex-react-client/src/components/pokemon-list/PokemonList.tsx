@@ -13,9 +13,12 @@ const langMap: Record<LangOption, string> = {
   de: "SUCHE",
 };
 
+// height of the simplebar content after loading 151 pokemon in pixels
+// since item height is purely static always we only need to calculate this once
+const CONTENT_HEIGHT = 5136; 
+
 const PokemonList: React.FC<{
   selectPaneActive?: boolean;
-  pokemonList: PokemonNameList[];
   onPokemonClick: (id: string) => void;
 }> = ({ selectPaneActive, pokemonList, onPokemonClick }) => {
   const { language } = useLanguage();
