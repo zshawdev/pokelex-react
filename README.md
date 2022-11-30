@@ -74,4 +74,4 @@ PokéLex boasts a slick interface and parallels many of the functionalities of t
 * Expand Pokémon list to all current Pokémon
 * Additional Pokédex features (world locations, evolutions, additional search sorts and filters)
 * Auto-generated TypeScript interfaces for data from PokéAPI
-* 
+* Containerize application for deployment anywhere
