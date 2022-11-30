@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getPokemon, getPokemonList } from "../../api";
 import Loading from "../../components/Loading";
 import { PokemonList } from "../../components/pokemon-list";
-import { PokemonContextProvider, PokemonName } from "../../hooks/usePokemon";
+import { PokemonContextProvider } from "../../hooks/usePokemon";
 
 import "./Body.css";
 

@@ -188,6 +188,8 @@ interface Lexmon {
   entry: LangSplit;
 }
 
+type PokemonName = Pick<Lexmon, 'id' | 'name'>;
+
 interface CachedPokemon {
   base: Pokemon;
   lex: Lexmon;

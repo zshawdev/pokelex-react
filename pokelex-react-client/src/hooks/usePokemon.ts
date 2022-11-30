@@ -1,10 +1,6 @@
 import React from "react";
 import { noop } from "../utils/constants";
 
-export interface PokemonName {
-  name: LangSplit;
-  id: string;
-}
 interface PokemonDataList {
   pokemonList: PokemonName[];
   setPokemonList: (list: PokemonName[]) => void;
