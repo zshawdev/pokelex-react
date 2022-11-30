@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getPokemon, getPokemonList } from "../../api";
+import { getPokemon, setup } from "../../api";
 import Loading from "../../components/Loading";
 import { PokemonList } from "../../components/pokemon-list";
 import { PokemonContextProvider } from "../../hooks/usePokemon";
@@ -13,32 +13,23 @@ const Body: React.FC = () => {
   const [activePokemon, setActivePokemon] = useState<Lexmon>();
   const [pokemonList, setPokemonList] = useState<PokemonName[]>([]);
   const [lexmon, setLexmon] = useState<Lexmon[]>([]);
+  const [error, setError] = useState<string>();
 
   const toggleCollapse = () => setListCollapsed(!listCollapsed);
 
   useEffect(() => {
-    Promise.all([
-      getPokemonList().then((list) => {
-        if (Array.isArray(list)) {
-          setPokemonList(list);
-          return true;
-        }
-        return false;
-      }),
-      getPokemon(25).then((pokemon: Lexmon) => {
-        if (pokemon.id) {
-          addToLexmon(pokemon);
-          onSelectPokemon(pokemon.id);
-          return true;
-        }
-        return false;
-      }),
-    ]).finally(() => {
-      setLoading(false);
-    });
+    setup().then(({ pokemonList, pikachu }) => {
+      if(Array.isArray(pokemonList)) {
+        setPokemonList(pokemonList);
+      }
+      if(pikachu.id) {
+        addToLexmon(pikachu);
+        selectPokemon(pikachu.id);
+      }
+    }).finally(() => setLoading(false));
   }, []);
 
-  const onSelectPokemon = (id: string) => {
+  const selectPokemon = (id: string) => {
     const selectedLexmon = lexmon.find(lex => lex.id === id);
     if(!selectedLexmon) {
       setFetchingPokemon(true);
@@ -83,7 +74,7 @@ const Body: React.FC = () => {
             </span>
             <PokemonList
               selectPaneActive={!listCollapsed}
-              onPokemonClick={onSelectPokemon}
+              onPokemonClick={selectPokemon}
             />
           </>
         )}
