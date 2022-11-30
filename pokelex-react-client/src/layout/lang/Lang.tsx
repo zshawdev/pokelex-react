@@ -1,6 +1,6 @@
 import React from "react";
 import { LangButton } from "../../components";
-import useLanguage, { LangOption } from "../../hooks/useLanguage";
+import useLanguage from "../../hooks/useLanguage";
 
 const langMap: Record<LangOption, Record<LangOption, string>> = {
   en: { en: "ENGLISH", fr: "FRENCH", de: "GERMAN" },
@@ -13,7 +13,7 @@ const Lang: React.FC = () => {
 
   return (
     <div className="flex justify-center gap-16 bg-[rgba(43,33,33,0.3)] py-4 px-16 z-10">
-      {Object.entries(langMap).map(([lang, text]) => (
+      {Object.keys(langMap).map(lang => (
         <LangButton
           key={lang}
           text={langMap[language][lang as LangOption]}
