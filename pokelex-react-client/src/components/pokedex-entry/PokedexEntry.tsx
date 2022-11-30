@@ -10,7 +10,7 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
 
   const styleProps = { style: { display: entryPaneActive ? "block" : "none" } };
 
-  return <div {...styleProps} className="body-pane md:w-[55%]">swag</div>;
+  return <div {...styleProps} className="body-pane md:w-[55%] border-l border-white"></div>;
 };
 
 export default PokedexEntry;

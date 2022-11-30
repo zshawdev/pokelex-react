@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -9,6 +11,11 @@ module.exports = {
       '2xl': '1536px'
     },
     extend: {},
+    colors: {
+      accent: 'rgba(var(--color-accent) / <alpha-value>)',
+      white: colors.white,
+      black: colors.black
+    },
   },
   plugins: [],
   darkMode: "class",

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-accent: 135 135 135;
+  }
+}
+
 :root {
   --deg: 0deg;
 }
@@ -80,7 +86,7 @@ main {
 }
 
 .simplebar-vertical {
-  border: 0.4px solid #878787;
+  border: 0.4px solid rgb(var(--color-accent));
   border-radius: 4.5rem;
   height: 10rem;
   width: 0.9rem;
