@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getPokemon, setup } from "../../api";
-import { Loading, PokemonList, PokedexEntry } from "../../components";
+import { Loading, PokemonList, PokedexEntry, Toggle } from "../../components";
 import { PokemonContextProvider } from "../../hooks/usePokemon";
 
 import "./Body.css";
@@ -65,12 +65,7 @@ const Body: React.FC = () => {
           <Loading size={100} />
         ) : (
           <>
-            <span
-              onClick={toggleCollapse}
-              className="toggle-button block md:hidden absolute top-[2.8rem] left-8 cursor-pointer"
-            >
-              <span className="icon">&nbsp;</span>
-            </span>
+            <Toggle onClick={toggleCollapse} />
             <PokemonList
               selectPaneActive={!listCollapsed}
               onPokemonClick={selectPokemon}

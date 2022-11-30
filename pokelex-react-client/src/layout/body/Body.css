@@ -13,10 +13,6 @@
   }
 }
 
-.toggle-button {
-  height: calc((0.8rem * 2) + (0.2rem * 3));
-}
-
 .icon {
   position: relative;
   top: 50%;
