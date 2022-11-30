@@ -125,13 +125,15 @@ export const getAllPokemon = async (
     .sort((pokeA, pokeB) => pokeA.base.id - pokeB.base.id);
 };
 
+const transformName = (name: string) => name.replace('/♀/gi', '(F)').replace(/♂/gi, '(M)');
+
 // TODO: make this language agnostic and map all localizations for the name/ species/ entry keys
 export const mapPokemonToLexmon = (pokemon: Pokemon): Lexmon => ({
   id: padDigit(pokemon.id),
   name: {
-    en: pokemon.names[8].name.toUpperCase(),
-    de: pokemon.names[5].name.toUpperCase(),
-    fr: pokemon.names[4].name.toUpperCase(),
+    en: transformName(pokemon.names[8].name.toUpperCase()),
+    de: transformName(pokemon.names[5].name.toUpperCase()),
+    fr: transformName(pokemon.names[4].name.toUpperCase()),
   },
   image: `images/${pokemon.id}.png`,
   cry: `cries/${pokemon.id}.wav`,
