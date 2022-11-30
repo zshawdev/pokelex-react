@@ -26,7 +26,7 @@ const PokemonList: React.FC<{
   const scrollRef = useRef<any>();
   const [search, setSearch] = useState<string>("");
 
-  const otherProps = selectPaneActive ? { style: { display: "block" } } : {};
+  const styleProps = selectPaneActive ? { style: { display: "block" } } : {};
 
   useEffect(() => {
     const scrollListener: EventListener = (e => {
@@ -47,8 +47,8 @@ const PokemonList: React.FC<{
 
   return (
     <div
-      {...otherProps}
-      className="hidden bg-transparent ml-0 pl-[5.1125rem] w-full h-full border-y border-white border-solid md:block md:w-[45%] md:ml-[calc(4.8rem-2rem)] md:pl-0"
+      {...styleProps}
+      className="body-pane hidden bg-transparent ml-0 pl-[5.1125rem] md:block md:w-[45%] md:ml-[calc(4.8rem-2rem)] md:pl-0"
     >
       <input
         className="search ml-8 bg-black border border-[#878787] h-[2.85rem] w-[30.4rem] text-[2.8rem] mt-[1.1rem] mb-[0.4rem] text-center"
