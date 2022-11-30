@@ -1,0 +1,29 @@
+.search:focus::placeholder {
+  color: transparent;
+}
+
+.list-of-pokemon {
+  height: 20.6rem;
+  list-style: none;
+}
+
+.list-of-pokemon li {
+  background-color: #000;
+  border: 2px solid #878787;
+  border-radius: 3.3rem;
+  cursor: pointer;
+  font-size: 2.8rem;
+  margin: 2px 0;
+  padding-left: 1.3rem;
+  scroll-snap-align: start;
+  text-align: left;
+  width: 30.3rem;
+}
+
+.list-of-pokemon li:hover {
+  border-color: #bababa;
+}
+
+.list-of-pokemon li:focus {
+  outline: none;
+}
