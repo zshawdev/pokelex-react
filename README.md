@@ -44,3 +44,7 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
 2. run `npm start`
 
 That's it!
+
+## Usage
+
+PokéLex boasts a slick interface and parallels many of the functionalities of the actual Pokédex device as featured throughout the famous video game series:

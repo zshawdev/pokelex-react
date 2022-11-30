@@ -17,37 +17,40 @@ const Body: React.FC = () => {
   const toggleCollapse = () => setListCollapsed(!listCollapsed);
 
   useEffect(() => {
-    setup().then(({ pokemonList, pikachu }) => {
-      if(Array.isArray(pokemonList)) {
-        setPokemonList(pokemonList);
-      }
-      if(pikachu.id) {
-        addToLexmon(pikachu);
-        selectPokemon(pikachu.id);
-      }
-    }).finally(() => setLoading(false));
+    setup()
+      .then(({ pokemonList, pikachu }) => {
+        if (Array.isArray(pokemonList)) {
+          setPokemonList(pokemonList);
+        }
+        if (pikachu.id) {
+          addToLexmon(pikachu);
+          selectPokemon(pikachu.id);
+        }
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const selectPokemon = (id: string) => {
-    const selectedLexmon = lexmon.find(lex => lex.id === id);
-    if(!selectedLexmon) {
+    const selectedLexmon = lexmon.find((lex) => lex.id === id);
+    if (!selectedLexmon) {
       setFetchingPokemon(true);
-      getPokemon(parseInt(id, 10)).then((pokemon: Lexmon) => {
-        if(pokemon.id) {
-          addToLexmon(pokemon);
-          setActivePokemon(pokemon);
-        }
-      }).finally(() => {
-        setFetchingPokemon(false);
-      });
+      getPokemon(parseInt(id, 10))
+        .then((pokemon: Lexmon) => {
+          if (pokemon.id) {
+            addToLexmon(pokemon);
+            setActivePokemon(pokemon);
+          }
+        })
+        .finally(() => {
+          setFetchingPokemon(false);
+        });
     } else {
       setActivePokemon(selectedLexmon);
     }
     if (!listCollapsed) setListCollapsed(true);
   };
 
-  const addToLexmon = async (lex: Lexmon) => 
-  setLexmon([...lexmon, lex]);
+  const addToLexmon = async (lex: Lexmon) => setLexmon([...lexmon, lex]);
 
   return (
     <PokemonContextProvider
@@ -57,7 +60,7 @@ const Body: React.FC = () => {
         activePokemon,
         setActivePokemon,
         lexmon,
-        fetchingPokemon
+        fetchingPokemon,
       }}
     >
       <div className="body w-[44.825rem] md:w-[81.5rem] absolute z-10 top-1/2 left-1/2 flex text-white">
@@ -70,7 +73,7 @@ const Body: React.FC = () => {
               selectPaneActive={!listCollapsed}
               onPokemonClick={selectPokemon}
             />
-            <PokedexEntry />
+            <PokedexEntry entryPaneActive={listCollapsed} />
           </>
         )}
       </div>

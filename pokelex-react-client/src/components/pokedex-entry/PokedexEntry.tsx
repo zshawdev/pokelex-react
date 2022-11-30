@@ -47,6 +47,8 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
 
   const scrollPad = { paddingRight: entryPaneRef.current ? entryPaneRef.current.offsetWidth - entryPaneRef.current.clientWidth : 17 };
 
+  if(!entryPaneActive) return null;
+
   return (
     <div
       {...styleProps}
