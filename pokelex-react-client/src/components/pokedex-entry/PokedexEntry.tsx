@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getResource } from "../../api";
 import useLanguage from "../../hooks/useLanguage";
 import usePokemon from "../../hooks/usePokemon";
@@ -31,6 +31,7 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
   const { language } = useLanguage();
   const { activePokemon, fetchingPokemon } = usePokemon();
   const [audioFile, setAudiofile] = useState<HTMLAudioElement>();
+  const entryPaneRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (activePokemon && activePokemon.cry) {
@@ -44,15 +45,17 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
     if (audioFile) audioFile.play();
   };
 
+  const scrollPad = { paddingRight: entryPaneRef.current ? entryPaneRef.current.offsetWidth - entryPaneRef.current.clientWidth : 17 };
+
   return (
     <div
       {...styleProps}
-      className="body-pane md:w-[55%] md:border-l border-white"
+      className="body-pane md:w-[55%] md:border-l md:border-solid border-white overflow-hidden"
     >
       {fetchingPokemon ? (
         <Loading size={100} useText={false} />
       ) : (
-        <>
+        <div ref={entryPaneRef} style={scrollPad} className="h-full w-full box-content overflow-y-scroll">
           <div className="flex flex-col items-center">
             <span className="text-accent mt-xsmall">
               No. {activePokemon?.id}
@@ -85,9 +88,11 @@ const PokedexEntry: React.FC<{ entryPaneActive?: boolean }> = ({
                 {activePokemon.wt[MEASURE_CHOICE[language]]}
               </span>
             </div>
-            <p className="text-small"></p>
+            <p className="text-small border-t border-white border-solid my-0 mx-small">
+              { activePokemon.entry[language] }
+            </p>
           </>)}
-        </>
+        </div>
       )}
     </div>
   );
