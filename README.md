@@ -62,8 +62,10 @@ That's it!
 ## 📸 Screenshots
 
 PokéLex boasts a slick interface and parallels many of the functionalities of the actual Pokédex device as featured throughout the famous video game series:
-![Base Features](repo-resources/pokedex-readme.png)
-![Other Features](repo-resources/pokedex-readme-m.png)
+<p align="center" width="100%">
+    <img width="70%" src="repo-resources/pokedex-readme.png"> 
+    <img width="70%" src="repo-resources/pokedex-readme-m.png"> 
+</p>
 
 ## To-Do
 
