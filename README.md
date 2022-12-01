@@ -1,6 +1,10 @@
 # Pokélex React
 
-> A rewrite of [Pokélex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS
+> A rewrite of [Pokélex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS.
+
+## PokéLex
+
+PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
 
 ## Project Structure
 
@@ -34,10 +38,6 @@
  ┗ 📜custom.d.ts  # holds all global type declarations used in both client and server
 ```
 
-## Motivation
-
-PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
-
 ## Prerequisites
 
 * [Node.js](https://nodejs.org/en/download/) version 16+
@@ -53,11 +53,11 @@ That's it!
 
 ## 🏗 Built With
 
-* [Node.js](https://nodejs.org/en/) - A back-end JavaScript runtime environment
-* [TypeScript](https://www.typescriptlang.org/) - A strongly-typed programming language that builds on JavaScript
-* [Express](https://expressjs.com/) - A minimalist web framework for Node.js
-* [React](https://reactjs.org/) - A JavaScript library for building rich user interfaces
-* [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
+* [Node.js](https://nodejs.org/en/) - Open-source, cross-platform, back-end JavaScript runtime environment
+* [TypeScript](https://www.typescriptlang.org/) - Strongly-typed programming language that builds on JavaScript
+* [Express](https://expressjs.com/) - Minimalist web framework for Node.js
+* [React](https://reactjs.org/) - JavaScript library for building rich user interfaces
+* [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
 
 ## 📸 Screenshots
 
@@ -65,7 +65,7 @@ PokéLex boasts a slick interface and parallels many of the functionalities of t
 ![Base Features](repo-resources/pokedex-readme.png)
 ![Other Features](repo-resources/pokedex-readme-m.png)
 
-## TODO
+## To-Do
 
 ## 🛣 Roadmap
 
