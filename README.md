@@ -1,6 +1,28 @@
-# Pokelex React
+# PokéLex React
 
-> A rewrite of [Pokelex](https://github.com/zshawdev/pokelex) using React, Typescript, and TailwindCSS
+> A rewrite of [PokéLex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS.
+
+## PokéLex
+
+PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language-learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
+<p align="center" width="100%">
+    <img width="70%" src="https://raw.githubusercontent.com/zshawdev/pokelex/master/assets/img/readme/pokedex-demo.gif"> 
+</p>
+
+## ⚙ Features
+
+* Interactive user interface
+* English, French and German display modes
+* Search filter, by name (language-agnostic) or ID number
+* Day-night cycle, displays different backgrounds matching your current real-life sunrise-sunset cycle
+
+## 🏗 Built With
+
+* [Node.js](https://nodejs.org/en/) - Open-source, cross-platform, back-end JavaScript runtime environment
+* [TypeScript](https://www.typescriptlang.org/) - Strongly-typed programming language that builds on JavaScript
+* [Express](https://expressjs.com/) - Minimalist web framework for Node.js
+* [React](https://reactjs.org/) - JavaScript library for building rich user interfaces
+* [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
 
 ## Project Structure
 
@@ -8,20 +30,20 @@
 📦pokelex-react
  ┣ 📂pokelex-react-client 
  ┃  ┣ 📙webpack.config.js  }
- ┃  ┣ 📙postcss.config.js  }--> # config for various bundler/ postprocessing tools
+ ┃  ┣ 📙postcss.config.js  }--> # config for various bundler/post-processing tools
  ┃  ┣ 📙tailwind.config.js }
  ┃  ┣ 📙babel.config.js    }
  ┃  ┣ 📂public   # all assets loaded on the client (images, manifest, etc)
  ┃  ┗ 📂src
  ┃     ┣ 📂components # base components that can be reused throughout the application            
  ┃     ┣ 📂hooks      # hooks that (for right now) store mostly context objects
- ┃     ┣ 📂layout     # components that strictly handle application structure/ layout
+ ┃     ┣ 📂layout     # components that strictly handle application structure/layout
  ┃     ┣ 📂utils
- ┃     ┣ 📘api.ts       # server application interactoin
+ ┃     ┣ 📘api.ts       # server application interaction
  ┃     ┣ 📔[clear.css, index.css] # base imported css styles
  ┃     ┣ ⚛️App.tsx      # Application entry point
  ┃     ┣ ⚛️index.tsx    # bootstrap
- ┃     ┗ 📄index.html   # template for webpack html copy plugin
+ ┃     ┗ 📄index.html   # template for HtmlWebpackPlugin
  ┃
  ┣ 📂server 
  ┃  ┣ 📂[cries, images]  # static assets that are served from the server
@@ -34,36 +56,27 @@
  ┗ 📜custom.d.ts  # holds all global type declarations used in both client and server
 ```
 
-## Motivation
-
-PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
-
 ## Prerequisites
 
-* [NodeJS](https://nodejs.org/en/download/) version 16+
+* [Node.js](https://nodejs.org/en/download/) version 16+
 
 ## Getting Started
 
 ```bash
 npm install
+# Followed by
 npm start
 ```
 
 That's it!
 
-## 🏗 Built With
-
-* [NodeJS](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-* [Typescript](https://www.typescriptlang.org/) - TypeScript is a strongly typed programming language that builds on JavaScript
-* [Express](https://expressjs.com/) - A minimalist web framework for Node.js
-* [React](https://reactjs.org/) - JS library for building rich user interfaces
-* [TailwindCSS](https://tailwindcss.com/) - Utility first CSS framework
-
 ## 📸 Screenshots
 
 PokéLex boasts a slick interface and parallels many of the functionalities of the actual Pokédex device as featured throughout the famous video game series:
-![Base Features](repo-resources/pokedex-readme.png)
-![Other Features](repo-resources/pokedex-readme-m.png)
+<p align="center" width="100%">
+    <img width="70%" src="repo-resources/pokedex-readme.png"> 
+    <img width="70%" src="repo-resources/pokedex-readme-m.png"> 
+</p>
 
 ## 🛣 Roadmap
 
