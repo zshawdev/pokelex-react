@@ -169,7 +169,6 @@ ${todos.join("\n")}
     const todosFileContentsReadme = `#${todosFileContents}`;
     try {
       const readmeFile = fs.readFileSync(path.resolve(__dirname, "README.md"), "utf-8");
-      console.log(typeof readmeFile);
       let newReadme;
       let todosSectionIndex = readmeFile.indexOf("## TODOS"), endTodosSectionIndex;
       if(todosSectionIndex === -1) {
