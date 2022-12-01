@@ -9,6 +9,14 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
     <img width="70%" src="https://raw.githubusercontent.com/zshawdev/pokelex/master/assets/img/readme/pokedex-demo.gif"> 
 </p>
 
+## 🏗 Built With
+
+* [Node.js](https://nodejs.org/en/) - Open-source, cross-platform, back-end JavaScript runtime environment
+* [TypeScript](https://www.typescriptlang.org/) - Strongly-typed programming language that builds on JavaScript
+* [Express](https://expressjs.com/) - Minimalist web framework for Node.js
+* [React](https://reactjs.org/) - JavaScript library for building rich user interfaces
+* [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+
 ## Project Structure
 
 ```md
@@ -53,14 +61,6 @@ npm start
 ```
 
 That's it!
-
-## 🏗 Built With
-
-* [Node.js](https://nodejs.org/en/) - Open-source, cross-platform, back-end JavaScript runtime environment
-* [TypeScript](https://www.typescriptlang.org/) - Strongly-typed programming language that builds on JavaScript
-* [Express](https://expressjs.com/) - Minimalist web framework for Node.js
-* [React](https://reactjs.org/) - JavaScript library for building rich user interfaces
-* [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
 
 ## 📸 Screenshots
 
