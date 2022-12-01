@@ -5,6 +5,9 @@
 ## PokéLex
 
 PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
+<p align="center" width="100%">
+    <img width="70%" src="https://raw.githubusercontent.com/zshawdev/pokelex/master/assets/img/readme/pokedex-demo.gif"> 
+</p>
 
 ## Project Structure
 
