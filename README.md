@@ -1,13 +1,20 @@
-# Pokélex React
+# PokéLex React
 
-> A rewrite of [Pokélex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS.
+> A rewrite of [PokéLex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS.
 
 ## PokéLex
 
-PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
+PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive language-learning approach with the universally-loved, multimedia sensation that is Pokémon. Practice your foreign language skills by learning about the world's favorite mythical creatures via this interactive, multilingual encyclopedia!
 <p align="center" width="100%">
     <img width="70%" src="https://raw.githubusercontent.com/zshawdev/pokelex/master/assets/img/readme/pokedex-demo.gif"> 
 </p>
+
+## ⚙ Features
+
+* Interactive user interface
+* English, French and German display modes
+* Search filter, by name (language-agnostic) or ID number
+* Day-night cycle, displays different backgrounds matching your current real-life sunrise-sunset cycle
 
 ## 🏗 Built With
 
