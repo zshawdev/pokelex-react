@@ -1,6 +1,6 @@
-# Pokelex React
+# Pokélex React
 
-> A rewrite of [Pokelex](https://github.com/zshawdev/pokelex) using React, Typescript, and TailwindCSS
+> A rewrite of [Pokélex](https://github.com/zshawdev/pokelex) using React, TypeScript, and Tailwind CSS
 
 ## Project Structure
 
@@ -8,20 +8,20 @@
 📦pokelex-react
  ┣ 📂pokelex-react-client 
  ┃  ┣ 📙webpack.config.js  }
- ┃  ┣ 📙postcss.config.js  }--> # config for various bundler/ postprocessing tools
+ ┃  ┣ 📙postcss.config.js  }--> # config for various bundler/post-processing tools
  ┃  ┣ 📙tailwind.config.js }
  ┃  ┣ 📙babel.config.js    }
  ┃  ┣ 📂public   # all assets loaded on the client (images, manifest, etc)
  ┃  ┗ 📂src
  ┃     ┣ 📂components # base components that can be reused throughout the application            
  ┃     ┣ 📂hooks      # hooks that (for right now) store mostly context objects
- ┃     ┣ 📂layout     # components that strictly handle application structure/ layout
+ ┃     ┣ 📂layout     # components that strictly handle application structure/layout
  ┃     ┣ 📂utils
- ┃     ┣ 📘api.ts       # server application interactoin
+ ┃     ┣ 📘api.ts       # server application interaction
  ┃     ┣ 📔[clear.css, index.css] # base imported css styles
  ┃     ┣ ⚛️App.tsx      # Application entry point
  ┃     ┣ ⚛️index.tsx    # bootstrap
- ┃     ┗ 📄index.html   # template for webpack html copy plugin
+ ┃     ┗ 📄index.html   # template for HtmlWebpackPlugin
  ┃
  ┣ 📂server 
  ┃  ┣ 📂[cries, images]  # static assets that are served from the server
@@ -40,7 +40,7 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
 
 ## Prerequisites
 
-* [NodeJS](https://nodejs.org/en/download/) version 16+
+* [Node.js](https://nodejs.org/en/download/) version 16+
 
 ## Getting Started
 
@@ -53,11 +53,11 @@ That's it!
 
 ## 🏗 Built With
 
-* [NodeJS](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-* [Typescript](https://www.typescriptlang.org/) - TypeScript is a strongly typed programming language that builds on JavaScript
+* [Node.js](https://nodejs.org/en/) - A back-end JavaScript runtime environment
+* [TypeScript](https://www.typescriptlang.org/) - A strongly-typed programming language that builds on JavaScript
 * [Express](https://expressjs.com/) - A minimalist web framework for Node.js
-* [React](https://reactjs.org/) - JS library for building rich user interfaces
-* [TailwindCSS](https://tailwindcss.com/) - Utility first CSS framework
+* [React](https://reactjs.org/) - A JavaScript library for building rich user interfaces
+* [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
 
 ## 📸 Screenshots
 
