@@ -57,6 +57,7 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
 
 ```bash
 npm install
+# Followed by
 npm start
 ```
 
