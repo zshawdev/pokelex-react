@@ -8,11 +8,13 @@ import { sleep } from "./utils";
 const app = express();
 
 app.use(cors());
-app.use("/cries", express.static(path.join(__dirname, "cries")));
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/", express.static(path.join(__dirname, "www")));
+
 app.use(express.json());
 
-app.use("*", async (req, res, next) => {
+const apiRouter = express.Router();
+
+apiRouter.use(async (req, res, next) => {
     // an amateur way to let clients load a little longer on initial api requests if the server is still being set up
     if(isSettingUp()) {
       for(let i = 0; i < 5; i++) {
@@ -24,7 +26,7 @@ app.use("*", async (req, res, next) => {
     next();
 });
 
-app.use("/pokemon/:id", async (req, res, next) => {
+apiRouter.route("/pokemon/:id").get(async (req, res, next) => {
   const { id } = req.params;
   
   if(id) {
@@ -37,11 +39,16 @@ app.use("/pokemon/:id", async (req, res, next) => {
   return res.sendStatus(404);
 });
 
-app.use("/pokemon-list", async(req, res, next) => {
+apiRouter.route("/pokemon-list").get(async(req, res, next) => {
   const cachedPokemon = await getAllPokemon();
   if(cachedPokemon) {
     return res.json(cachedPokemon.map(p => ({ name: p.lex.name, id: p.lex.id })));
   }
 });
+
+apiRouter.use("/cries", express.static(path.join(__dirname, "cries")));
+apiRouter.use("/images", express.static(path.join(__dirname, "images")));
+
+app.use("/api", apiRouter);
 
 export default app;

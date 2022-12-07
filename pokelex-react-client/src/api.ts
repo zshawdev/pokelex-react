@@ -1,7 +1,7 @@
 import fetchJson from "./utils/fetch";
 
 // TODO: have this handled using env secrets and insert in CI/CD where appropriate
-const BASE_URL = process.env.NODE_ENV === "production" ? "https://api.pokelex.com/" : "http://localhost:3000/";
+const BASE_URL = process.env.NODE_ENV === "production" ? "https://pokelex.com/api/" : "http://localhost:3000/";
 
 export const getAllPokemon = async () => fetchJson(BASE_URL + "pokemon/");
 

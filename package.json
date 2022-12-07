@@ -6,10 +6,10 @@
   "scripts": {
     "start:server": "ts-node server/index.ts",
     "start:client": "cd pokelex-react-client && npm run dev",
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start": "node dist/index.js",
     "build:server": "rm -rf dist && tsc && copyfiles -u 1 server/images/*.png server/cries/*.wav dist",
     "build:client": "cd pokelex-react-client && npm run build",
-    "build": "npm run build:server && npm run build:client && copyfiles -u 2 pokelex-react-client/dist/* dist/www",
+    "build": "npm run build:server && npm run build:client && copyfiles -u 2 pokelex-react-client/dist/**/* dist/www",
     "install": "cd pokelex-react-client && npm install",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
