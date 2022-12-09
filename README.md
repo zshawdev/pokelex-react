@@ -24,7 +24,7 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
 * [React](https://reactjs.org/) - JavaScript library for building rich user interfaces
 * [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
 
-## Project Structure
+## 🏛️ Project Structure
 
 ```md
 📦pokelex-react
@@ -56,7 +56,7 @@ PokéLex ("Pokédex" + "lexicon") is a website that combines an immersive langua
  ┗ 📜custom.d.ts  # holds all global type declarations used in both client and server
 ```
 
-## Prerequisites
+## 📝 Prerequisites
 
 * [Node.js](https://nodejs.org/en/download/) version 16+
 
@@ -87,7 +87,7 @@ PokéLex boasts a slick interface and parallels many of the functionalities of t
 * Auto-generated TypeScript interfaces for data from PokéAPI
 * Containerize application for deployment anywhere
 
-## TODOS  
+## 🚧 TODOS  
 > Created using `generate-todo.js`
 
 - custom.d.ts:61: make the versions object here its own auto-generated interface
@@ -96,7 +96,7 @@ PokéLex boasts a slick interface and parallels many of the functionalities of t
 - server/pokeapi.ts:129: make this language agnostic and map all localizations for the name/ species/ entry keys
 - server/__tests__/api.test.ts:3: simplify startup time so this can be lower
 
-## Acknowledgements
+## 🙌 Acknowledgements
 
 * [sunrise-sunset](https://github.com/udivankin/sunrise-sunset/blob/master/src/index.ts) - Day/night functionality
 * [loading-io](https://loading.io/) - Loading icon
