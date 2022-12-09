@@ -95,3 +95,9 @@ PokéLex boasts a slick interface and parallels many of the functionalities of t
 - server/pokeapi.ts:107: build out a better way to emit when `getPokemonList` finishes and resolve that here
 - server/pokeapi.ts:129: make this language agnostic and map all localizations for the name/ species/ entry keys
 - server/__tests__/api.test.ts:3: simplify startup time so this can be lower
+
+## Acknowledgements
+
+* [sunrise-sunset](https://github.com/udivankin/sunrise-sunset/blob/master/src/index.ts) - Day/night functionality
+* [loading-io](https://loading.io/) - Loading icon
+* [Ibrahim Saberi](https://github.com/GeorgeIpsum) - `generate-todo-js` creator and coding mentor
